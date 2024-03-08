@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+    <title>Feedback</title>
+    <script src="https://code.jquery.com/jquery-latest.js">
+    </script>
+    <script type>
+	function put(){
+		feedback = $("#checkFeedback").val()
+		if (feedback == ""){
+			alert("You didn't enter any feedback.")
+			return
+		}
+		$.post("post.php",
+		{
+			text : feedback
+		},
+		function changeText(text){
+			alertModule.alert("The text has been put to the server")
+			$("#checkFeedback").text("The text has been put to server");
+		});
+	}
+
+	function get(){
+		confirmation = "confirm"
+		$.get("get.php",
+		{
+			text:confirm
+		},
+		function returnText(text){
+			
+			$("#checkFeedback").text(string)
+		});
+	}
+		
+	function checkform(){
+		message = document.getElementById("feedback");
+		messageVal = message.value;
+		if(messageVal == ""){
+			alert("You must enter something in the text area");
+			console.log("nothing");
+			return false;
+		} else {
+			console.log("something");
+			return true;
+		}
+
+	}
+    </script>
+    <head>
+        <link rel = "stylesheet" href = "mystyle.css">
+    </head>
+    <body>
+        <h1 style = "text-align: center"> Feedback
+        </h1>
+        
+        <div class = "navbar">
+            <a href = "Homepage.html">Home</a>
+            <a href = "News.html">News</a>
+            <a href = "Feedback.html">Feedback</a>
+            <div class = "dropdown">
+                <button class = "dropbtn">Heroes
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class = "dropdown-content">
+                    <a href = "Spider-Man.html">Spider-Man</a>
+                    <a href = "CaptainAmerica.html">Captain America</a> 
+                    <a href = "IronMan.html">Iron Man</a>
+                    <a href = "Hawkeye.html">Hawkeye</a>
+                    <a href = "BlackWidow.html">Black Widow</a>
+                    <a href = "Thor.html">Thor</a> 
+                    <a href = "DoctorStrange.html">Doctor Strange</a>
+                    <a href = "Daredevil.html">Daredevil</a>
+                </div>
+            </div>
+            
+            <div class = "dropdown">
+                <button class = "dropbtn">Villians
+                    <i class = "fa fa-caret-down"></i>
+                </button>
+                <div class = "dropdown-content">
+                    <a href = "DoctorOctopus.html">Doctor Octopus</a>
+		    <a href = "RedSkull.html">Red Skull</a>
+		    <a href = "IronMonger.html">Iron Monger</a>
+		    <a href = "Bullseye.html">Bullseye</a>
+		    <a href = "Taskmaster.html">Taskmaster</a>
+		    <a href = "Loki.html">Loki</a>
+		    <a href = "Dormammu.html">Dormammu</a>
+		    <a href = "Kingpin.html">Kinpin</a>
+                </div>
+        </div>
+        </div>
+        
+        <br>
+        
+        <p1>Let us know what you think of our website!</p1>
+        
+        <form method = "post" action = "feedback.php" onsubmit = "return checkform()">
+            <label for = "fullName">Name: </label><br>
+            <input type = "text" id == "fullName" name = "fullName"><br>
+            <input type = "radio" id = "excellent" name = "rating" value = "Excellent">
+            <label for = "excellent">Excellent</label> <br>
+            <input type = "radio" id = "good" name = "rating" value = "Good">
+            <label for = "good">Good</label> <br>
+            <input type = "radio" id = "soso" name = "rating" value = "SoSo">
+            <label for = "soso">So-So</label><br>
+            <input type = "radio" id = "okay" name = "rating" value = "Okay">
+            <label for = "excellent">Okay</label><br>
+            <input type = "radio" id = "poor" name = "rating" value = "Poor">
+            <label for = "excellent">Poor</label><br>
+            <textarea name = "feedback" id = "feedback" rows = "10" cols = "40" placeholder="Enter your feedback here"></textarea> <br>            
+            <input type = "submit" value = "Submit">
+            
+        </form>
+	<br>
+	<p1>Check your feedback here</p>
+	<textarea name = "checkFeedback" id = "checkFeedback" rows = "10" cols = "40" placeholder = "Enter your feedback here"></textarea><br>
+	<button onclick = "put()">put to server</button>
+	<button onclick ="get()">get from server</button>
+        
+    </body>
+</html>
